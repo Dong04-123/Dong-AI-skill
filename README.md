@@ -27,7 +27,8 @@ This Hermes skill connects your agent to [Dong AI Company](https://github.com/Do
 
 - **Red/Blue team debate** on every design decision
 - **Dynamic worker pools** recruited per-task with self-healing and cross-review
-- **Graph memory** — structured symbol/dependency persistence, not window stuffing
+- **Graph memory** — persistent symbol/dependency persistence across ALL past projects
+- **Experience Engine** — debriefs every project, extracts lessons, injects them into future CEO prompts
 - **Board review** with scoring and quality gates (≥ 6.0/10)
 - **Multi-phase pipelines** with resume capability
 - **MCP plugin ecosystem** — 8+ servers installable with one command
