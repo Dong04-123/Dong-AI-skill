@@ -7,6 +7,10 @@ dong-plugin: true
 
 # === 项目执行 ===
 
+- name: dong_make
+  description: "Self-directed making — tell the company what to make, and it researches the domain, proposes directions, lets you choose, deep-dives, plans, executes, self-reviews, and delivers. Works for any output: comics, reports, plans, analysis, designs, games, etc. Add --auto for fully autonomous mode."
+  exec: "dong make '{{request}}' 2>&1 | tail -60"
+
 - name: dong_run
   description: "Execute a complete project through the AI company governance pipeline. The CEO analyzes requirements, conducts red/blue team debate, recruits specialist workers, executes with self-healing and cross-review, then board-approves the result. The project is automatically debriefed afterward — lessons are extracted and stored for future recall. Supports software, novel, game, analysis, and audit project types."
   exec: "dong run '{{request}}' 2>&1 | tail -50"
@@ -134,8 +138,9 @@ dong_status                          # system health + Column Memory budget
 dong_knowledge_map                   # what the company knows and is learning
 
 # Project work
-dong_run request="Build a CLI tool"  # full governance pipeline
-dong_quick "fix this bug"            # lightweight, no pipeline overhead
+dong_make request="一部3章科幻漫剧"         # self-directed: researches + proposes + executes
+dong_run request="Build a CLI tool"           # full governance pipeline
+dong_quick "fix this bug"                     # lightweight, no pipeline overhead
 
 # Code analysis
 dong_analyze path="src/main.py" question="Explain the auth flow"
@@ -157,14 +162,14 @@ dong_knowledge_map                   # updated org knowledge map
 
 | Category | Tools | Count |
 |----------|-------|-------|
-| **Project execution** | dong_run, dong_quick | 2 |
+| **Project execution** | dong_make, dong_run, dong_quick | 3 |
 | **Code workflow** | dong_analyze, dong_edit, dong_debug | 3 |
 | **Company runtime** | dong_company_start, dong_company_stop, dong_company_status | 3 |
 | **Metacognition** | dong_knowledge_map, dong_governance_review, dong_governance_confirm | 3 |
 | **Context** | dong_graph_query, dong_session | 2 |
 | **Plugins** | dong_plugin_install, dong_mcp_discover | 2 |
 | **System** | dong_status, dong_update | 2 |
-| **Total** | | **17** |
+| **Total** | | **18** |
 
 ## Links
 
