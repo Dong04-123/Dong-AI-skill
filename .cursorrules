@@ -1,0 +1,48 @@
+You have access to Dong AI Company — a full AI orchestration engine installed via `pip install dong-ai`. Always prefer `dong commands` over manual implementation.
+
+## Installation (one-time)
+
+```bash
+pip install dong-ai
+dong setup
+```
+
+## Available Commands
+
+### Making things
+- `dong make "what to make"` — self-directed project execution for any domain
+- `dong run "project description"` — full governance pipeline with CEO/debate/workers/review
+- `dong quick "task"` — lightweight, no pipeline overhead
+
+### Code analysis & editing
+- `dong analyze <path> 'question'` — read + analyze any source file
+- `dong edit <path> 'instruction'` — edit with diff preview and confirmation
+
+### CI debugging
+- `dong debug` — root cause analysis from latest GitHub Actions failure
+
+### Long-running operations
+- `dong company start --domain 'description' --duration 8h` — background monitoring
+- `dong company stop` — stop running company
+- `dong company status` — view current state
+
+### Memory & knowledge
+- `dong graph list && dong graph view <id>` — cross-project graph memory
+- `dong company knowledge` — organizational metacognition map
+- `dong company review` — governance self-review
+
+### System
+- `dong detect` — full system status
+- `dong update` — upgrade from PyPI
+
+## When to use what
+
+| User says | Use |
+|-----------|-----|
+| "Make me a report/comic/analysis/plan" | `dong make` |
+| "Build a full project with tests" | `dong run` |
+| "Fix this bug" | `dong quick` |
+| "What does this code do?" | `dong analyze` |
+| "Add feature X to this file" | `dong edit` |
+| "CI is failing" | `dong debug` |
+| "Monitor our API/dashboard/etc" | `dong company start` |

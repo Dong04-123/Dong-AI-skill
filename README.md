@@ -9,12 +9,12 @@
 ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝╚═╝
 ```
 
-# Dong AI — Hermes Skill
+# Dong AI — Universal Agent Adapter
 
-**Give your Hermes Agent enterprise-grade project governance.**
+**Give any AI agent enterprise-grade project governance.** Works with Hermes, Claude Code,
+Cursor, Copilot, Codex, or any agent that can run shell commands.
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Hermes](https://img.shields.io/badge/hermes-compatible-blue)](https://github.com/NousResearch/hermes-agent)
 [![PyPI](https://img.shields.io/pypi/v/dong-ai)](https://pypi.org/project/dong-ai/)
 
 </div>
@@ -23,147 +23,128 @@
 
 ## Overview
 
-This Hermes skill connects your agent to [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company) — an AI orchestration engine with full organizational governance. Instead of single-turn LLM responses, you get:
+This repository ships **adapter files** that let any agent discover and use Dong AI Company's
+18 tools. The adapter files are:
 
-- **Red/Blue team debate** on every design decision
-- **Dynamic worker pools** recruited per-task with self-healing and cross-review
-- **Graph memory** — persistent symbol/dependency persistence across ALL past projects
-- **Experience Engine** — debriefs every project, extracts lessons, injects them into future CEO prompts
-- **Board review** with scoring and quality gates (≥ 6.0/10)
-- **Multi-phase pipelines** with resume capability
-- **MCP plugin ecosystem** — 8+ servers installable with one command
-- **Session recovery** — search past sessions and graph memory across all work
-- **Enterprise features** — API auth, multi-tenancy, Prometheus metrics, structured logs
+| File | Platform | Install |
+|------|----------|---------|
+| `SKILL.md` | **Hermes Agent** | `cp SKILL.md ~/.hermes/skills/dong-ai-company/` |
+| `CLAUDE.md` | **Claude Code** | `cp CLAUDE.md ~/.claude/claude.md` |
+| `.cursorrules` | **Cursor** | `cp .cursorrules .cursorrules` |
+| `README.md` | **Any agent** | Read this file directly |
+
+The engine behind all adapters is [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company) —
+an AI orchestration engine with organizational governance.
 
 ## Install
 
 ```bash
-pip install dong-ai[all]
+pip install dong-ai
 dong setup
+```
 
+That's it. Every `dong` command is now available from any shell.
+
+## How Every Agent Calls Dong AI
+
+The universal interface is `dong <command>`. Regardless of which agent you use, the
+invocation is the same:
+
+```bash
+# Project execution
+dong make "3-chapter sci-fi comic series"
+dong run "Build a CLI tool for CSV parsing"
+dong quick "fix this bug"
+
+# Code analysis
+dong analyze src/main.py "Explain the auth flow"
+dong edit api.py "Add rate limiting"
+
+# CI debugging
+dong debug
+
+# Long-running operation
+dong company start --domain "Monitor our e-commerce API" --duration 8h
+dong company status
+dong company stop
+
+# Memory & knowledge
+dong graph list
+dong graph view my-project
+dong company knowledge
+dong company review
+```
+
+## Capabilities
+
+| Category | Tools | Details |
+|----------|-------|---------|
+| **Project execution** | dong_make, dong_run, dong_quick | Self-directed making, full governance pipeline, lightweight mode |
+| **Code workflow** | dong_analyze, dong_edit, dong_debug | Code Q&A, file editing with diff, CI root cause analysis |
+| **Company runtime** | company_start, company_stop, company_status | 7x24 background operation with autonomous domains |
+| **Metacognition** | knowledge, governance_review, governance_confirm | Knowledge map, risk audit, decision confirmation |
+| **Context** | graph_query, session | Cross-project graph memory, session recovery |
+| **Plugins** | plugin_install, mcp_discover | MCP ecosystem integration |
+| **System** | dong_status, dong_update | System health, auto-upgrade |
+
+## Adapter Quick Reference
+
+### Hermes Agent
+```bash
 mkdir -p ~/.hermes/skills/dong-ai-company
 cp SKILL.md ~/.hermes/skills/dong-ai-company/
 ```
+Then use `dong_*` tool calls in your prompts.
 
-## Tools (19 total)
-
-### 项目管理
-| Tool | Description |
-|------|-------------|
-| `dong_run request="..."` | Full project lifecycle: debate → plan → execute → review → gate |
-| `dong_audit path="..."` | Board-reviewed codebase audit with severity-graded findings |
-| `dong_quick_analysis prompt="..."` | One-shot code/file analysis, lightweight alternative to dong_run |
-
-### 日常巡检
-| Tool | Description |
-|------|-------------|
-| `dong_status` | System health, available models, graph memory stats, installed plugins |
-| `dong_config` | View current configuration — provider, mode, context size, temperature |
-| `dong_logs` | Check recent structured log entries for debugging |
-| `dong_help` | List all available dong commands |
-
-### 图记忆
-| Tool | Description |
-|------|-------------|
-| `dong_graph_query project_id="..."` | List projects and drill into graph memory |
-| `dong_graph_search keyword="..."` | Search symbol/dependency graphs across all projects |
-
-### 模型与配置
-| Tool | Description |
-|------|-------------|
-| `dong_model_switch provider="deepseek" mode="api"` | Switch between providers/modes on the fly |
-
-### 会话恢复
-| Tool | Description |
-|------|-------------|
-| `dong_session session_id="..."` | List and view past working sessions |
-
-### 自动化
-| Tool | Description |
-|------|-------------|
-| `dong_cron_list` | List scheduled cron tasks |
-| `dong_webhook_list` | List configured webhook endpoints |
-
-### 插件生态
-| Tool | Description |
-|------|-------------|
-| `dong_plugin_install name="..."` | Install MCP plugin from registry |
-| `dong_plugin_search query="..."` | Search plugin registry |
-| `dong_plugin_list` | List installed plugins |
-| `dong_mcp_discover` | Discover and test MCP servers |
-
-### 服务
-| Tool | Description |
-|------|-------------|
-| `dong_serve` | Start API server with auth, metrics, health checks |
-
-### 统计
-| Tool | Description |
-|------|-------------|
-| `dong_project_stats path="..."` | Quick codebase file/line counts by language |
-
-## Daily Workflow
-
+### Claude Code
 ```bash
-# Morning check
-dong_status       # what's running?
-dong_logs         # any overnight errors?
-dong_cron_list    # scheduled tasks ok?
+cp CLAUDE.md ~/.claude/claude.md
+```
+Then Claude Code knows `dong` commands are available.
 
-# Context recovery from yesterday
-dong_session      # find yesterday's session
-dong_graph_search keyword="auth redesign"  # find that function
+### Cursor
+```bash
+cp .cursorrules .cursorrules
+```
+Then Cursor knows to use `dong` commands.
 
-# Switch to cloud for heavy task
-dong_model_switch provider="deepseek" mode="api"
+### GitHub Copilot
+Create `.github/copilot-instructions.md` with:
+```markdown
+The @dong CLI provides project execution, code analysis, company runtime,
+metacognition, and memory capabilities. Use `dong <command>` to invoke.
+```
 
-# Project work
-dong_run request="Build a CLI tool for CSV parsing"
-
-# Extend capabilities
-dong_plugin_install name=filesystem
-dong_plugin_install name=github
-dong_mcp_discover  # verify
+### Any Other Agent
+Just document:
+```
+pip install dong-ai
+dong <command>
 ```
 
 ## Architecture
 
 ```
-Hermes Agent ──→ [TOOL_CALL:dong_run] ──→ Dong AI CLI
-                                              │
-                                         ┌────┴────┐
-                                         │  CEO    │
-                                         │  ├─ Red/Blue Debate
-                                         │  ├─ Project Pipeline
-                                         │  └─ Board Review
-                                         └────┬────┘
-                                              │
-                                         ┌────┴────┐
-                                         │ Workers │
-                                         │  ├─ Code/Test/Review
-                                         │  ├─ Self-healing (×3)
-                                         │  └─ Cross-review
-                                         └─────────┘
-                                              │
-                                         ┌────┴────┐
-                                         │  Graph  │
-                                         │  Memory │
-                                         └─────────┘
-                                              │
-                                         ┌────┴──────┐
-                                         │   MCP     │
-                                         │  Plugins  │
-                                         │ (8+servers)│
-                                         └───────────┘
+Any Agent (Hermes / Claude Code / Cursor / Copilot / Codex / etc.)
+  │  shell out via dong <command>
+  │
+  ▼
+Dong AI Company Engine  ← pip install dong-ai
+  ├── Column Memory       (cross-project context management)
+  ├── Experience Engine   (debrief → skill → future recall)
+  ├── SafetyGovernor      (confidence scoring + risk gates)
+  ├── Metacognition       (knowledge map + strategy evolution)
+  └── Domain Runtimes     (7x24 autonomous operation)
 ```
+
+The `dong` CLI is the universal contract. The engine is the same regardless of which
+agent wraps it.
 
 ## Links
 
-- **Core Engine**: [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company)
+- **Engine**: [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company)
 - **PyPI**: [dong-ai](https://pypi.org/project/dong-ai/)
-- **NPM**: [@dong-ai/sdk](https://www.npmjs.com/package/@dong-ai/sdk)
 - **Hermes Agent**: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
-- **MCP Spec**: [modelcontextprotocol.io](https://modelcontextprotocol.io)
 
 ## License
 
