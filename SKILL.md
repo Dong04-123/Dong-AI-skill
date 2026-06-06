@@ -88,8 +88,18 @@ for l in lines:
   description: "List all configured webhook endpoints — shows registered URLs that Dong AI will respond to. Useful for checking CI/CD integration status."
   exec: "dong webhook list 2>&1"
 
-# === 插件生态 ===
+# === 上网工具 ===
 
+- name: dong_web_search
+  description: "Search the internet via DuckDuckGo. No API key needed. Returns titles, URLs, and snippets. Supports Chinese and English queries. Useful for finding latest news, documentation, facts, and code references."
+  exec: "dong chat --one-shot '搜索互联网: {{query}}' 2>&1 | tail -30"
+
+- name: dong_web_fetch
+  description: "Fetch and read the content of any public web page. Strips HTML, scripts, and styles to return clean readable text. Useful for reading documentation, articles, news, or API responses."
+  exec: "dong chat --one-shot '获取网页内容: {{url}}' 2>&1 | tail -50"
+
+# === 插件生态 ===
+# 安装/搜索/管理 MCP 插件
 - name: dong_plugin_install
   description: "Install an MCP plugin from the Dong AI plugin registry to extend agent capabilities. Available plugins include: filesystem (file I/O), github (PR/Issue management), fetch (web scraping), puppeteer (browser automation), sqlite (database), memory (knowledge graph), sequential-thinking (multi-step reasoning), brave-search (web search)."
   exec: "dong plugin install {{name}} 2>&1"
@@ -305,10 +315,11 @@ console.log(resp.log);
 | **模型与配置** | dong_model_switch | 1 |
 | **会话恢复** | dong_session | 1 |
 | **自动化** | dong_cron_list, dong_webhook_list | 2 |
+| **上网工具** | dong_web_search, dong_web_fetch | 2 |
 | **插件生态** | dong_plugin_install, dong_plugin_search, dong_plugin_list, dong_mcp_discover | 4 |
 | **服务** | dong_serve | 1 |
 | **统计** | dong_project_stats | 1 |
-| **总计** | | **19** |
+| **总计** | | **21** |
 
 ## Links
 
