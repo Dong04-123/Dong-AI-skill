@@ -22,7 +22,7 @@ dong-plugin: true
 # === 日常巡检 ===
 
 - name: dong_status
-  description: "Check the current status of the Dong AI Company — available models, running projects, system health, graph memory statistics, and installed plugins."
+  description: "Check the current status of the Dong AI Company — available models, running projects, system health, graph memory statistics, installed plugins, and Column Memory budget (token usage per column)."
   exec: "dong detect 2>&1"
 
 - name: dong_config
@@ -121,6 +121,10 @@ for l in lines:
 - name: dong_serve
   description: "Start the Dong AI API server on port 8648 with OpenAI-compatible endpoints, API key authentication, Prometheus metrics, and health checks. The server supports chat completions (streaming and non-streaming), CEO project execution, and webhook receiving. Set DONG_API_KEY env var for auth."
   exec: "dong serve --host 0.0.0.0 --port 8648 2>&1 &"
+
+- name: dong_update
+  description: "Check for and install the latest version of Dong AI from PyPI. Shows current version, checks PyPI for newer release, and auto-upgrades if available."
+  exec: "dong update 2>&1"
 
 # === 快速统计 ===
 
@@ -317,9 +321,9 @@ console.log(resp.log);
 | **自动化** | dong_cron_list, dong_webhook_list | 2 |
 | **上网工具** | dong_web_search, dong_web_fetch | 2 |
 | **插件生态** | dong_plugin_install, dong_plugin_search, dong_plugin_list, dong_mcp_discover | 4 |
-| **服务** | dong_serve | 1 |
+| **服务** | dong_serve, dong_update | 2 |
 | **统计** | dong_project_stats | 1 |
-| **总计** | | **21** |
+| **总计** | | **22** |
 
 ## Links
 
