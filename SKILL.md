@@ -1,14 +1,14 @@
 ---
 name: dong-ai-company
-description: "Turn Hermes into an infinite-context AI company. Column memory, self-directed learning, governance pipeline, plugin ecosystem, and 7x24 company runtime. Your agent gains cross-project memory, metacognitive awareness, and autonomous operation capabilities."
-tags: [ai-company, column-memory, metacognition, governance, mcp, self-learning, orchestration]
+description: "Your AI company — any domain, any output. Self-directed learning, column memory, governance pipeline, 7x24 company runtime. Make reports, comics, business plans, analysis, or code. pip install dong-ai."
+tags: [ai-company, self-learning, governance, mcp, column-memory, metacognition, orchestration]
 dong-plugin: true
 ---
 
 # === 项目执行 ===
 
 - name: dong_make
-  description: "Self-directed making — tell the company what to make, and it researches the domain, proposes directions, lets you choose, deep-dives, plans, executes, self-reviews, and delivers. Works for any output: comics, reports, plans, analysis, designs, games, etc. Add --auto for fully autonomous mode."
+  description: "Self-directed making for any domain. Tell the company what you want to make — a market report, a comic series, a business plan, a technical analysis, a marketing strategy. It researches the domain, proposes directions for your approval, deep-dives, executes, self-reviews, and delivers. Add --auto for fully autonomous mode."
   exec: "dong make '{{request}}' 2>&1 | tail -60"
 
 - name: dong_run
