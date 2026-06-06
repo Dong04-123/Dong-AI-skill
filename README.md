@@ -7,69 +7,80 @@
 ██║  ██║██║   ██║██║╚██╗██║██║         ██╔══██║██║
 ██████╔╝╚██████╔╝██║ ╚████║╚██████╗    ██║  ██║██║
 ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝╚═╝
+```
 
 # Dong AI — Hermes Skill
 
-**Give your Hermes Agent a full AI Company backbone.**
+**Give your Hermes Agent enterprise-grade project governance.**
 
-Red/Blue debate · Dynamic workers · Graph memory · Board review  
-7×24 project engineering, inside your Hermes.
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Hermes](https://img.shields.io/badge/hermes-compatible-blue)](https://github.com/NousResearch/hermes-agent)
+[![PyPI](https://img.shields.io/pypi/v/dong-ai)](https://pypi.org/project/dong-ai/)
 
 </div>
 
 ---
 
-## What is this?
+## Overview
 
-A [Hermes Agent](https://github.com/NousResearch/hermes-agent) skill that connects your Hermes to [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company) — turning it from a personal assistant into an **AI-powered engineering enterprise**.
+This Hermes skill connects your agent to [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company) — an AI orchestration engine with full organizational governance. Instead of single-turn LLM responses, you get:
 
-## Quick Install
+- **Red/Blue team debate** on every design decision
+- **Dynamic worker pools** recruited per-task with self-healing and cross-review
+- **Graph memory** — structured symbol/dependency persistence, not window stuffing
+- **Board review** with scoring and quality gates (≥ 6.0/10)
+- **Multi-phase pipelines** with resume capability
+
+## Install
 
 ```bash
-# 1. Install Dong AI
-pip install dong-ai
-
-# 2. Configure
+pip install dong-ai[all]
 dong setup
 
-# 3. Start API
-dong serve &
-
-# 4. Copy this skill to Hermes
+# Install the skill for Hermes
+mkdir -p ~/.hermes/skills/dong-ai-company
 cp SKILL.md ~/.hermes/skills/dong-ai-company/
 ```
 
-## Available Commands
+## Tools
 
-| Command | What it does |
-|---------|--------------|
-| `dong_run "build a config system"` | Full project lifecycle with governance |
-| `dong_chat "review this architecture"` | Consult AI CEO |
-| `dong_audit /path/to/project` | Automated codebase audit |
-| `dong_schedule cmd="dong run audit" interval=1h` | Recurring tasks |
+| Tool | Description |
+|------|-------------|
+| `dong_run request="..."` | Full project lifecycle: debate → plan → execute → review → gate |
+| `dong_chat message="..."` | Consult the AI CEO for architecture analysis |
+| `dong_audit path="..."` | Board-reviewed codebase audit with severity-graded findings |
+| `dong_status` | System health, available models, graph memory stats |
 
 ## Architecture
 
 ```
-You → Hermes Agent → [TOOL_CALL:dong_*] → Dong AI API
-                                             ↓
-                                    CEO → Red/Blue Debate
-                                        → Dynamic Pipeline
-                                        → Board Review
-                                        → Quality Gate
+Hermes Agent ──→ [TOOL_CALL:dong_run] ──→ Dong AI API
+                                              │
+                                         ┌────┴────┐
+                                         │  CEO    │
+                                         │  ├─ Red/Blue Debate
+                                         │  ├─ Project Pipeline
+                                         │  └─ Board Review
+                                         └────┬────┘
+                                              │
+                                         ┌────┴────┐
+                                         │ Workers │
+                                         │  ├─ Code/Test/Review
+                                         │  ├─ Self-healing (×3)
+                                         │  └─ Cross-review
+                                         └─────────┘
+                                              │
+                                         ┌────┴────┐
+                                         │  Graph  │
+                                         │  Memory │
+                                         └─────────┘
 ```
-
-## Requirements
-
-- Python 3.10+
-- Dong AI (`pip install dong-ai`)
-- Hermes Agent (any version with skill support)
 
 ## Links
 
-- **This skill**: https://github.com/Dong04-123/Dong-AI-skill
-- **Dong AI Core**: https://github.com/Dong04-123/Dong-AI-Company
-- **Hermes Agent**: https://github.com/NousResearch/hermes-agent
+- **Core Engine**: [Dong AI Company](https://github.com/Dong04-123/Dong-AI-Company)
+- **PyPI**: [dong-ai](https://pypi.org/project/dong-ai/)
+- **Hermes Agent**: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
 
 ## License
 
