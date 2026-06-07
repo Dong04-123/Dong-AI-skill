@@ -1,6 +1,6 @@
 ---
 name: dong-ai-company
-description: "Your AI company — any domain, any output. Self-directed learning, column memory, governance pipeline, 7x24 company runtime. Make reports, comics, business plans, analysis, or code. pip install dong-ai."
+description: "AI company engine — any domain, any output. CEO=200K context, smart model routing gateway, difficulty-aware pipeline, cross-project graph memory. pip install dong-ai."
 tags: [ai-company, self-learning, governance, column-memory, metacognition, orchestration]
 dong-plugin: true
 ---
@@ -101,6 +101,14 @@ cp SKILL.md ~/.hermes/skills/dong-ai-company/
   description: "Discover and test all configured MCP servers — scans .mcp.json and Hermes config, connects to each server, and lists available tools with descriptions."
   exec: "dong mcp 2>&1"
 
+- name: dong_gateway
+  description: "Smart model routing gateway. View all providers with speed/quality/context scores, see which model is selected per task type. Supports `dong gateway list`, `dong gateway set <provider>`, `dong gateway tier <provider> cheap|expensive|auto`."
+  exec: "dong gateway list 2>&1"
+
+- name: dong_demo
+  description: "Zero-config demo of cross-project graph memory. No API key needed, no network calls. Creates fake projects in an isolated SQLite DB and shows graph list, cross-project search, dependency analysis, and session resume."
+  exec: "dong demo 2>&1"
+
 # === System ===
 
 - name: dong_status
@@ -187,8 +195,8 @@ dong analyze path="src/main.py" question="What does this do?"
 | Metacognition | dong_knowledge_map, dong_governance_review, dong_governance_confirm | 3 |
 | Context | dong_graph_query, dong_session | 2 |
 | Plugins | dong_plugin_install, dong_mcp_discover | 2 |
-| System | dong_status, dong_update | 2 |
-| **Total** | | **18** |
+|| **System** | dong_status, dong_update, dong_gateway, dong_demo | 4 |
+|| **Total** | | **20** |
 
 ## Links
 
